@@ -13,14 +13,21 @@ public class StringCalculator {
     }
 
     private String[] numbersFrom(String input) {
+        String delimiterRegex = ",|\n"; // default delimiters
+        String numbers = input;
+
         if (input.startsWith("//")) {
             int newlineIndex = input.indexOf('\n');
-            String delimSpec = input.substring(2, newlineIndex);
-            String numbers = input.substring(newlineIndex + 1);
-            String delimRegex = java.util.regex.Pattern.quote(delimSpec);
-            return numbers.split(delimRegex);
+            if (newlineIndex > 2) { // ensure there's a delimiter spec
+                String delimiterSpec = input.substring(2, newlineIndex).trim();
+                if (!delimiterSpec.isEmpty()) {
+                    delimiterRegex = java.util.regex.Pattern.quote(delimiterSpec);
+                }
+            }
+            numbers = input.substring(newlineIndex + 1);
         }
-        return input.split(",|\n");
+
+        return numbers.split(delimiterRegex);
     }
 
 

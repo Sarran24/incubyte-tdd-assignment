@@ -9,8 +9,20 @@ public class StringCalculator {
     }
 
     private int sumOf(String[] parts) {
-        return Arrays.stream(parts).mapToInt(Integer::parseInt).sum();
+        java.util.List<Integer> negatives = new java.util.ArrayList<>();
+        int sum = 0;
+        for (String p : parts) {
+            if (p.isEmpty()) continue;
+            int v = Integer.parseInt(p);
+            if (v < 0) negatives.add(v);
+            sum += v;
+        }
+        if (!negatives.isEmpty()) {
+            throw new IllegalArgumentException("Negatives not allowed: " + negatives);
+        }
+        return sum;
     }
+
 
     private String[] numbersFrom(String input) {
         String delimiterRegex = ",|\n"; // default delimiters

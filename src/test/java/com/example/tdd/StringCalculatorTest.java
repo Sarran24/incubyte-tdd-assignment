@@ -4,28 +4,24 @@ import com.example.tdd.service.StringCalculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-class StringCalculatorTest {
-
-    private StringCalculator calculator;
+public class StringCalculatorTest {
+    private StringCalculator calc;
 
     @BeforeEach
     void setUp() {
-        calculator = new StringCalculator();
+        calc = new StringCalculator();
     }
 
     @Test
-    void shouldReturnZeroForEmptyString() {
-        int result = calculator.add("");
-        assertThat(result).isZero();
+    void emptyStringReturnsZero() {
+        assertThat(calc.add("")).isEqualTo(0);
     }
 
     @Test
     void singleNumberReturnsValue() {
-        var calc = new com.example.tdd.service.StringCalculator();
         assertThat(calc.add("5")).isEqualTo(5);
-
     }
-
 }
+

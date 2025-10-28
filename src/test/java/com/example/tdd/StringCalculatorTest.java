@@ -34,6 +34,10 @@ public class StringCalculatorTest {
         assertThat(calc.add("1\n2,3")).isEqualTo(6);
     }
 
+    @Test
+    void customDelimiter() {
+        assertThat(calc.add("//;\n1;2")).isEqualTo(3);
+    }
 
 }
 

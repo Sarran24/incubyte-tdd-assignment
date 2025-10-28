@@ -13,8 +13,15 @@ public class StringCalculator {
     }
 
     private String[] numbersFrom(String input) {
-        return input.split("[,\n" +
-                "]");
+        if (input.startsWith("//")) {
+            int newlineIndex = input.indexOf('\n');
+            String delimSpec = input.substring(2, newlineIndex);
+            String numbers = input.substring(newlineIndex + 1);
+            String delimRegex = java.util.regex.Pattern.quote(delimSpec);
+            return numbers.split(delimRegex);
+        }
+        return input.split(",|\n");
     }
+
 
 }

@@ -48,5 +48,11 @@ public class StringCalculatorTest {
         assertThat(thrown.getMessage()).contains("-2", "-4");
     }
 
+    @Test
+    void numbersGreaterThan1000Ignored() {
+        assertThat(calc.add("2,1001,6")).isEqualTo(8); // 1001 ignored
+    }
+
+
 }
 

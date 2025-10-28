@@ -13,8 +13,8 @@ public class StringCalculator {
     }
 
     private String[] numbersFrom(String input) {
-        return input.split("[,\n" +
-                "]");
+        return input.split(","); // Only split by comma, ignore newline
     }
+
 
 }

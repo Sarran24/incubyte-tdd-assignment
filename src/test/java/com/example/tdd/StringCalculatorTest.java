@@ -20,4 +20,11 @@ class StringCalculatorTest {
         int result = calculator.add("");
         assertThat(result).isZero();
     }
+
+    @Test
+    void singleNumberReturnsValue() {
+        var calc = new com.example.tdd.service.StringCalculator();
+        assertThat(calc.add("5")).isEqualTo(5);
+    }
+
 }

@@ -1,6 +1,8 @@
 package com.example.tdd.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class StringCalculator {
     public int add(String input) {
@@ -9,19 +11,27 @@ public class StringCalculator {
     }
 
     private int sumOf(String[] parts) {
-        java.util.List<Integer> negatives = new java.util.ArrayList<>();
+        List<Integer> negatives = new ArrayList<>();
         int sum = 0;
+
         for (String p : parts) {
             if (p.isEmpty()) continue;
             int v = Integer.parseInt(p);
             if (v < 0) negatives.add(v);
             sum += v;
         }
+
         if (!negatives.isEmpty()) {
-            throw new IllegalArgumentException("Negatives not allowed: " + negatives);
+            throw new IllegalArgumentException(buildNegativeMessage(negatives));
         }
+
         return sum;
     }
+
+    private String buildNegativeMessage(List<Integer> negatives) {
+        return "Negatives not allowed: " + negatives;
+    }
+
 
 
     private String[] numbersFrom(String input) {

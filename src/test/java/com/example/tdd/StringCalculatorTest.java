@@ -23,5 +23,11 @@ public class StringCalculatorTest {
     void singleNumberReturnsValue() {
         assertThat(calc.add("5")).isEqualTo(5);
     }
+
+    @Test
+    void twoNumbersCommaSeparated() {
+        assertThat(calc.add("1,2")).isEqualTo(3);
+    }
+
 }
 

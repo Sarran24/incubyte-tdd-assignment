@@ -18,7 +18,7 @@ public class StringCalculator {
             if (p.isEmpty()) continue;
             int v = Integer.parseInt(p);
             if (v < 0) negatives.add(v);
-            sum += v;
+            if (v <= 1000) sum += v; // ignore >1000
         }
 
         if (!negatives.isEmpty()) {
@@ -27,6 +27,7 @@ public class StringCalculator {
 
         return sum;
     }
+
 
     private String buildNegativeMessage(List<Integer> negatives) {
         return "Negatives not allowed: " + negatives;

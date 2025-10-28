@@ -39,5 +39,14 @@ public class StringCalculatorTest {
         assertThat(calc.add("//;\n1;2")).isEqualTo(3);
     }
 
+    @Test
+    void negativeNumbersThrow() {
+        var thrown = org.junit.jupiter.api.Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> calc.add("1,-2,3,-4")
+        );
+        assertThat(thrown.getMessage()).contains("-2", "-4");
+    }
+
 }
 
